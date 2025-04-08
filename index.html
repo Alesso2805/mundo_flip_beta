@@ -1,0 +1,202 @@
+<html lang="es">
+    <head>
+        <TITLE>My Web Page</TITLE>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <script src="index.js"></script>
+    </head>
+    <body>
+    <!-- flip navbar-->
+    <nav>
+        <div class="navbar">
+            <!-- Logo a la izquierda -->
+            <div class="navbar-left">
+                <img id="flip-logo" src="./assets/flip-logo.png" alt="flip logo">
+            </div>
+
+            <!-- Links en el centro -->
+            <div class="navbar-center">
+                <a href="#home">Quienes Somos</a>
+                <a href="#about">Quiero Invertir</a>
+                <a href="#contact">Mundo Flip</a>
+            </div>
+
+            <!-- Botones a la derecha -->
+            <div class="navbar-right">
+                <button id="register-button">Regístrate</button>
+                <button id="login-button">Iniciar Sesión</button>
+            </div>
+        </div>
+    </nav>
+    <div class="hero-section">
+        <div class="h1-container">
+            <h1>Compara tus alternativas de</h1>
+            <h1>inversión</h1>
+        </div>
+        <div class="ellipse-container">
+            <img src="./assets/elipse.png" class="ellipse" alt="Órbita">
+
+            <div class="planet-container" id="planet1-container">
+                <span class="planet-label">Banco</span>
+                <img src="./assets/banco.png" class="planet" id="planet1" alt="Banco">
+            </div>
+
+            <div class="planet-container" id="planet2-container">
+                <span class="planet-label">Acciones</span>
+                <img src="./assets/acciones.png" class="planet" id="planet2" alt="Acciones">
+            </div>
+
+            <div class="planet-container" id="planet3-container">
+                <span class="planet-label">Bonos</span>
+                <img src="./assets/bonos.png" class="planet" id="planet3" alt="Bonos">
+            </div>
+
+            <div class="planet-container" id="planet4-container">
+                <span class="planet-label">Alquiler</span>
+                <img src="./assets/alquiler.png" class="planet" id="planet4" alt="Alquiler">
+            </div>
+        </div>
+    </div>
+    <div class="warren-buffet">
+        <div class="text-container">
+            <h1 class="first-phrase">
+                <span class="highlight1">Invertir a largo plazo, en la alternativa adecuada para ti y en el mercado correcto</span>
+                <span class="highlight2"> es la unica manera de cuidar y hacer crecer tu dinero.</span>
+            </h1>
+            <h2 class="second-phrase">
+                <span class="highlight3">Y Flip, es el encargado de llevar este mensaje de Warren Buffet a la </span>
+                <span class="highlight4">mayor cantidad de personas.</span>
+            </h2>
+        </div>
+        <div class="warren-container">
+            <img src="./assets/warren-phrase.png" alt="warren buffet phrase" class="warren-phrase">
+        </div>
+    </div>
+    <div class="nav-actions">
+        <nav class="investment-nav">
+            <ul class="main-menu">
+                <li><a href="#" class="nav-item active" data-target="depositos">Depósitos</a></li>
+                <li class="has-submenu">
+                    <a href="#" class="nav-item" data-target="acciones">Acciones</a>
+                    <ul class="submenu" id="acciones-submenu">
+                        <li><a href="#" class="submenu-item" data-target="latam-acciones">LATAM</a></li>
+                        <li><a href="#" class="submenu-item" data-target="cobra-eeuu">Cobra Anchorada (EE.UU)</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#" class="nav-item" data-target="bonos">Bonos</a>
+                    <ul class="submenu" id="bonos-submenu">
+                        <li><a href="#" class="submenu-item" data-target="latam-bonos">LATAM</a></li>
+                        <li><a href="#" class="submenu-item" data-target="panda-zen">Panda Zen (EE.UU)</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="nav-item" data-target="bienes-raices">Bienes raíces</a></li>
+                <li><a href="#" class="nav-item" data-target="factoring">Factoring</a></li>
+                <li><a href="#" class="nav-item" data-target="notas-estructuradas">Notas Estructuradas</a></li>
+                <li><a href="#" class="nav-item" data-target="deuda-privada">Deuda Privada</a></li>
+            </ul>
+        </nav>
+        <div class="content-display">
+            <div class="content-item active" id="depositos-content">
+                <div class="depositos-header">
+                    <h1>Depósitos</h1>
+                    <p>Depositas una cantidad de dinero en un banco por un tiempo determinado, y este te pagará intereses.</p>
+                </div>
+                <div class="depositos-container">
+                    <div class="depositos-column risks-column">
+                        <h1>Riesgos</h1>
+                        <ul class="risks-list">
+                            <li><strong class="titles">Inflación.</strong> Todos los años el precio de lo que consumimos aumenta y genera que nuestro dinero pierda valor. Si la inflación es más alta o cercana que lo que te paga tu depósito, tu dinero está perdiendo valor.</li>
+                            <li><strong class="titles">Liquidez.</strong> En caso de necesitar el dinero, tendrías que esperar que venza tu depósito.</li>
+                            <li><strong class="titles">Incumplimiento.</strong> En caso la entidad financiera enfrente problemas financieros, podría no pagar los intereses prometidos.</li>
+                            <li><strong class="titles">Costo de oportunidad.</strong> Mientras esté vigente tu depósito, no podrás invertir en otras alternativas más rentables a largo plazo.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 2: Espacio para iPhone -->
+                    <div class="iphone-placeholder">
+                        <!-- Espacio reservado para maqueta de iPhone -->
+                    </div>
+
+                    <!-- Columna 3: Beneficios -->
+                    <div class="depositos-column benefits-column">
+                        <h1>Beneficios</h1>
+                        <ul class="benefits-list">
+                            <li><strong class="titles">No volatilidad.</strong> Tu dinero no sufre movimientos hacia arriba o hacia abajo.</li>
+                            <li><strong class="titles">Fondo de Seguro de Depósito.</strong> En caso la entidad financiera quiebre, esta asegura tu dinero por hasta S/ 121,000.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="depositos-footer">
+                    <span class="light-blue">Si eliges un depósito, </span>
+                    <span>te sugerimos optar por entidades financieras que tengan solidez, como los bancos más importantes del país.</span>
+                </div>
+            </div>
+            <div class="content-item" id="acciones-content">
+                <h2>Acciones</h2>
+                <p>Inversión en el mercado de valores comprando participaciones de empresas.</p>
+            </div>
+
+            <div class="content-item" id="latam-acciones-content">
+                <h3>Acciones LATAM</h3>
+                <p>Empresas líderes en Latinoamérica con potencial de crecimiento regional.</p>
+            </div>
+
+            <div class="content-item" id="cobra-eeuu-content">
+                <h3>Cobra Anchorada (EE.UU)</h3>
+                <p>Acciones de empresas estadounidenses con estrategias defensivas y dividendos estables.</p>
+            </div>
+
+            <div class="content-item" id="bonos-content">
+                <h2>Bonos</h2>
+                <p>Inversión en deuda de gobiernos o empresas con rentabilidad fija.</p>
+            </div>
+
+            <div class="content-item" id="latam-bonos-content">
+                <h3>Bonos LATAM</h3>
+                <p>Deuda soberana y corporativa emitida en mercados latinoamericanos.</p>
+            </div>
+
+            <div class="content-item" id="panda-zen-content">
+                <h3>Panda Zen (EE.UU)</h3>
+                <p>Bonos estadounidenses con enfoque en sostenibilidad y bajo riesgo.</p>
+            </div>
+
+            <div class="content-item" id="bienes-raices-content">
+                <h2>Bienes raíces</h2>
+                <p>Inversión en propiedades físicas o fondos de inversión inmobiliaria.</p>
+            </div>
+
+            <div class="content-item" id="factoring-content">
+                <h2>Factoring</h2>
+                <p>Financiamiento mediante la compra de cuentas por cobrar de empresas.</p>
+            </div>
+
+            <div class="content-item" id="notas-estructuradas-content">
+                <h2>Notas Estructuradas</h2>
+                <p>Productos financieros que combinan un bono con derivados para perfiles específicos.</p>
+            </div>
+
+            <div class="content-item" id="deuda-privada-content">
+                <h2>Deuda Privada</h2>
+                <p>Préstamos directos a empresas no cotizadas en bolsa con rentabilidades atractivas.</p>
+            </div>
+        </div>
+    </div>
+    <div id="animals">
+        <h1 class="animal-phrase">
+            <span class="animal-highlight">Y más importante que la rentabilidad,</span>
+            <span class="animal-highlight-2">es estar invertido de acuerdo con tu nivel de tolerancia de riesgo o "perfil de riesgo"</span>
+        </h1>
+        <div class="animals-container">
+            <img src="./assets/animals.png" alt="flip animals" class="flip-animals">
+        </div>
+        <div class="animal-button-container">
+            <button id="animal-button">Haz click aquí, para conocer tu perfil de riesgo</button>
+        </div>
+    </div>
+    </body>
+</html>
