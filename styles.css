@@ -532,6 +532,7 @@ li {
 }
 
 .depositos-header p {
+    font-weight: 500;
     color: #666666;
 }
 
@@ -544,4 +545,9 @@ li {
     font-size: 2rem;
     font-weight: 500;
     padding: 0 2rem;
+}
+
+.content-item .turn-gray {
+    font-weight: 500;
+    color: #666666;
 }
