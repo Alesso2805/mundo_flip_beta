@@ -11,7 +11,6 @@ body {
     background-color: #fff;
 }
 
-/* Grupos de elementos */
 .navbar-left,
 .navbar-center,
 .navbar-right {
@@ -405,7 +404,7 @@ body {
 .depositos-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
+    gap: 0.5rem;
     align-items: start;
 }
 
@@ -417,9 +416,6 @@ body {
 
 /* Columna de iPhone */
 .iphone-placeholder {
-    background: #f5f5f5;
-    border-radius: 8px;
-    display: flex;
     align-items: center;
     justify-content: center;
     min-height: 600px;
@@ -531,6 +527,10 @@ li {
     color: black;
 }
 
+.depositos-header {
+    padding-bottom: 30px;
+}
+
 .depositos-header p {
     font-weight: 500;
     color: #666666;
@@ -541,7 +541,7 @@ li {
 }
 
 .depositos-footer {
-    margin-top: 2rem;
+    margin-top: 0.3rem;
     font-size: 2rem;
     font-weight: 500;
     padding: 0 2rem;
@@ -550,4 +550,126 @@ li {
 .content-item .turn-gray {
     font-weight: 500;
     color: #666666;
+}
+
+/* Ensure submenus are hidden by default */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    border-radius: 4px;
+    z-index: 100;
+}
+
+/* Show submenu on hover */
+.has-submenu:hover .submenu {
+    display: block;
+}
+
+/* Style submenu items */
+.submenu-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.submenu-item:hover {
+    background-color: #f0f0f0;
+    color: #748E54;
+}
+
+.image-acciones {
+    width: 60%;
+    height: auto;
+    margin: 0 auto; /* Centrar horizontalmente */
+    transition: transform 0.5s ease; /* Transición suave para rotación y escalado */
+}
+
+.layout-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.layout-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.layout-button.vertical {
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 20px;
+}
+
+.layout-button.horizontal {
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 20px;
+}
+
+.layout-button.active {
+    background-color: #53613e;
+    color: white;
+}
+
+.iphone-placeholder.horizontal-layout img {
+    transition: transform 0.5s ease;
+    transform: rotate(-90deg);
+}
+
+.risks-column, .benefits-column {
+    transition: opacity 0.5s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iphone-image {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente */
+}
+
+.first-image, .second-image {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.first-image {
+    z-index: 2;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.second-image {
+    z-index: 1;
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 1s ease;
+}
+.first-image.hidden {
+    opacity: 0;
+    z-index: 1;
+}
+
+.second-image.show {
+    opacity: 1;
+    z-index: 2;
+    transform: rotate(0deg);
 }

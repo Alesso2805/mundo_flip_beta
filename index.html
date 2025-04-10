@@ -83,7 +83,7 @@
                     <a href="#" class="nav-item" data-target="acciones">Acciones</a>
                     <ul class="submenu" id="acciones-submenu">
                         <li><a href="#" class="submenu-item" data-target="latam-acciones">Perú</a></li>
-                        <li><a href="#" class="submenu-item" data-target="cobra-eeuu">Cobra Anchorada (EE.UU)</a></li>
+                        <li><a href="#" class="submenu-item" data-target="cobra-eeuu">Cobra Achorada (EE.UU)</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
@@ -96,14 +96,17 @@
                 <li><a href="#" class="nav-item" data-target="bienes-raices">Bienes raíces</a></li>
                 <li><a href="#" class="nav-item" data-target="factoring">Factoring</a></li>
                 <li><a href="#" class="nav-item" data-target="notas-estructuradas">Notas Estructuradas</a></li>
-                <li><a href="#" class="nav-item" data-target="deuda-privada">Deuda Privada</a></li>
             </ul>
         </nav>
         <div class="content-display">
             <div class="content-item active" id="depositos-content">
                 <div class="depositos-header">
                     <h1>Depósitos</h1>
-                    <p>Depositas una cantidad de dinero en un banco por un tiempo determinado, y este te pagará intereses.</p>
+                    <p class="dynamic-text"
+                       data-vertical-text="Depositas una cantidad de dinero en un banco por un tiempo determinado, y este te pagará intereses."
+                       data-horizontal-text="En los últimos 15 años, mientras tu depósito por $10,000 te hacía ganar $3,767, la inflación te quitaba $2,241. Solo hubieras ganado $102 al año o 1% anual.">
+                        Depositas una cantidad de dinero en un banco por un tiempo determinado, y este te pagará intereses.
+                    </p>
                 </div>
                 <div class="depositos-container">
                     <div class="depositos-column risks-column">
@@ -118,7 +121,14 @@
 
                     <!-- Columna 2: Espacio para iPhone -->
                     <div class="iphone-placeholder">
-                        <!-- Espacio reservado para maqueta de iPhone -->
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/DEPOSITOS.png" alt="Primera imagen">
+                            <img class="image-acciones second-image" src="./assets/DEPOSITOS_CELULAR_VOLTEADO_2.png" alt="Segunda imagen">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                            <button class="layout-button horizontal"></button>
+                        </div>
                     </div>
 
                     <!-- Columna 3: Beneficios -->
@@ -135,11 +145,14 @@
                     <span>te sugerimos optar por entidades financieras que tengan solidez, como los bancos más importantes del país.</span>
                 </div>
             </div>
-
             <div class="content-item" id="latam-acciones-content">
                 <div class="depositos-header">
                     <h1>Acciones Perú</h1>
-                    <p>Empresas líderes en Latinoamérica con potencial de crecimiento regional.</p>
+                    <p class="dynamic-text"
+                       data-vertical-text="Cuando las empresas peruanas necesitan dinero para expandirse, venden partes de su empresa en forma de acciones, dando a quienes las compren, acceso a una parte de sus utilidades."
+                       data-horizontal-text="Dentro de las empresas peruanas que venden sus acciones en la Bolsa de Valores de Lima (BVL) se encuentran Alicorp, Backus, entre otras.">
+                        Cuando las empresas peruanas necesitan dinero para expandirse, venden partes de su empresa en forma de acciones, dando a quienes las compren, acceso a una parte de sus utilidades.
+                    </p>
                 </div>
                 <div class="depositos-container">
                     <div class="depositos-column risks-column">
@@ -154,7 +167,14 @@
 
                     <!-- Columna 2: Espacio para iPhone -->
                     <div class="iphone-placeholder">
-                        <!-- Espacio reservado para maqueta de iPhone -->
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/ACCIONES%20PERU.png" alt="">
+                            <img class="image-acciones second-image" src="./assets/ACCIONES_PERU_CELULAR_VOLTEADO.png" alt="">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                            <button class="layout-button horizontal"></button>
+                        </div>
                     </div>
 
                     <!-- Columna 3: Beneficios -->
@@ -176,13 +196,19 @@
             </div>
 
             <div class="content-item" id="cobra-eeuu-content">
-                <h1>Acciones EE.UU. - Cobra Achorada (EE.UU)</h1>
-                <span class="turn-gray">Cuando las empresas de EE.UU.</span>
-                <span>necesitan dinero para expandirse,</span>
-                <span class="turn-gray">venden partes de su empresa en forma de acciones, dando a quienes las compren, acceso a</span>
-                <span> una parte de sus utilidades.</span>
-                <span class="turn-gray">La cobra</span>
-                <span>invierte en las 500 empresas más grandes de EE.UU. (S&P 500)</span>
+                <div class="depositos-header">
+                    <h1>Acciones EE.UU. - Cobra Achorada (EE.UU)</h1>
+                    <p class="dynamic-text"
+                       data-vertical-text="Cuando las empresas de EE.UU. necesitan dinero para expandirse, venden partes de su empresa en forma de acciones, dando a quienes las compren, acceso a una parte de sus utilidades. La cobra invierte en las 500 empresas más grandes de EE.UU. (S&P 500)"
+                       data-horizontal-text="Dentro de las 500 empresas más grandes de EE.UU. (S&P 500) que es en lo que invierte la cobra achorada, se encuentran empresas como Visa, Mastercard, Google, Facebook (Meta), Coca Cola, entre otras.">
+                        <span class="turn-gray">Cuando las empresas de EE.UU.</span>
+                        <span>necesitan dinero para expandirse,</span>
+                        <span class="turn-gray">venden partes de su empresa en forma de acciones, dando a quienes las compren, acceso a</span>
+                        <span> una parte de sus utilidades.</span>
+                        <span class="turn-gray">La cobra</span>
+                        <span>invierte en las 500 empresas más grandes de EE.UU. (S&P 500)</span>
+                    </p>
+                </div>
                 <div class="depositos-container">
                     <div class="depositos-column risks-column">
                         <h1>Riesgos</h1>
@@ -194,7 +220,14 @@
 
                     <!-- Columna 2: Espacio para iPhone -->
                     <div class="iphone-placeholder">
-                        <!-- Espacio reservado para maqueta de iPhone -->
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/ACCIONES%20EEUU.png" alt="Primera imagen">
+                            <img class="image-acciones second-image" src="./assets/ACCIONES_EEUU_CELULAR_VOLTEADO.png" alt="Segunda imagen">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                            <button class="layout-button horizontal"></button>
+                        </div>
                     </div>
 
                     <!-- Columna 3: Beneficios -->
@@ -216,79 +249,249 @@
                 </div>
             </div>
             <div class="content-item" id="bonos-content">
-                <h2>Bonos</h2>
-                <p>Inversión en deuda de gobiernos o empresas con rentabilidad fija.</p>
+                <div class="depositos-header">
+                    <h2>Bonos</h2>
+                    <p>Inversión en deuda de gobiernos o empresas con rentabilidad fija.</p>
+                </div>
             </div>
             <div class="content-item" id="latam-bonos-content">
-                <h2>Bonos LATAM</h2>
-                <p>Deuda soberana y corporativa emitida en mercados latinoamericanos.</p>
-                <div class="content-item" id="cobra-eeuu-content">
+                <div class="depositos-header">
                     <h1>Bonos LATAM</h1>
-                    <span class="turn-gray">A cambio de prestarle tu dinero a una empresa o al gobierno latinoamericano,</span>
-                    <span>te pagarán intereses de manera periódica (cupón).</span>
-                    <span class="turn-gray">Pueden ser compradas o vendidas como las acciones; sin embargo</span>
-                    <span> tienen menos movimiento en sus precios (volatilidad).</span>
-                    <div class="depositos-container">
-                        <div class="depositos-column risks-column">
-                            <h1>Riesgos</h1>
-                            <ul class="risks-list">
-                                <li><strong class="titles">Riesgo País.</strong>  Estas economías son más sensibles a conflictos políticos/sociales. Esto podría impactar negativamente en el precio de sus bonos.</li>
-                                <li><strong class="titles">Mercado.</strong> Si hay una crisis económica mundial, estos países tienen menos recursos para enfrentarla y recuperarse. Por eso, sus precios caen más y tardan más en recuperarse.</li>
-                                <li><strong class="titles">Liquidez.</strong>  Debido a que hay pocas empresas vendiendo bonos en LATAM, podría presentarse dificultades para comprar o vender esos bonos.</li>
-                                <li><strong class="titles">Crédito.</strong> Los riesgos anteriores aumentan la probabilidad de que sus empresas enfrenten problemas financieros generando que corras el riesgo de que no te paguen lo prometido.</li>
-                            </ul>
-                        </div>
+                    <p class="dynamic-text"
+                       data-vertical-text="A cambio de prestarle tu dinero a una empresa o al gobierno latinoamericano, te pagarán intereses de manera periódica (cupón).Pueden ser compradas o vendidas como las acciones; sin embargo tienen menos movimiento en sus precios (volatilidad)."
+                       data-horizontal-text="Dentro de las empresas de LATAM que venden bonos se encuentran Codelco (Chile), Cemex (México) e Itaú (Brasil).">
+                        <span class="turn-gray">A cambio de prestarle tu dinero a una empresa o al gobierno latinoamericano,</span>
+                        <span>te pagarán intereses de manera periódica (cupón).</span>
+                        <span class="turn-gray">Pueden ser compradas o vendidas como las acciones; sin embargo</span>
+                        <span> tienen menos movimiento en sus precios (volatilidad).</span>
+                    </p>
+                </div>
+                <div class="depositos-container">
+                    <div class="depositos-column risks-column">
+                        <h1>Riesgos</h1>
+                        <ul class="risks-list">
+                            <li><strong class="titles">Riesgo País.</strong>  Estas economías son más sensibles a conflictos políticos/sociales. Esto podría impactar negativamente en el precio de sus bonos.</li>
+                            <li><strong class="titles">Mercado.</strong> Si hay una crisis económica mundial, estos países tienen menos recursos para enfrentarla y recuperarse. Por eso, sus precios caen más y tardan más en recuperarse.</li>
+                            <li><strong class="titles">Liquidez.</strong>  Debido a que hay pocas empresas vendiendo bonos en LATAM, podría presentarse dificultades para comprar o vender esos bonos.</li>
+                            <li><strong class="titles">Crédito.</strong> Los riesgos anteriores aumentan la probabilidad de que sus empresas enfrenten problemas financieros generando que corras el riesgo de que no te paguen lo prometido.</li>
+                        </ul>
+                    </div>
 
-                        <!-- Columna 2: Espacio para iPhone -->
-                        <div class="iphone-placeholder">
-                            <!-- Espacio reservado para maqueta de iPhone -->
+                    <!-- Columna 2: Espacio para iPhone -->
+                    <div class="iphone-placeholder">
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/BONOS_LATAM.png" alt="Primera imagen">
+                            <img class="image-acciones second-image" src="./assets/BONOS_LATAM_CELULAR_VOLTEADO.png" alt="Primera imagen">
                         </div>
-
-                        <!-- Columna 3: Beneficios -->
-                        <div class="depositos-column benefits-column">
-                            <h1>Beneficios</h1>
-                            <ul class="benefits-list">
-                                <li><strong class="titles">Tasas de interés elevada.</strong>  Para compensar los riesgos que asumirías te ofrecen pagos de intereses elevados.</li>
-                                <li><strong class="titles">Familiaridad.</strong> Es probable que tengas cercanía con algunas de esas empresas que venden sus bonos.</li>
-                            </ul>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                            <button class="layout-button horizontal"></button>
                         </div>
                     </div>
-                    <div class="depositos-footer">
-                        <span>Si crees que Perú y Latinoamérica solucionarán </span>
-                        <span class="light-blue">todos estos riesgos</span>
-                        <span> y consideras que tendrán estabilidad y crecimiento económico a futuro, te sugerimos invertir en diversos bonos de las empresas más grandes y estables de LATAM.</span>
+
+                    <!-- Columna 3: Beneficios -->
+                    <div class="depositos-column benefits-column">
+                        <h1>Beneficios</h1>
+                        <ul class="benefits-list">
+                            <li><strong class="titles">Tasas de interés elevada.</strong>  Para compensar los riesgos que asumirías te ofrecen pagos de intereses elevados.</li>
+                            <li><strong class="titles">Familiaridad.</strong> Es probable que tengas cercanía con algunas de esas empresas que venden sus bonos.</li>
+                        </ul>
                     </div>
+                </div>
+                <div class="depositos-footer">
+                    <span>Si crees que Perú y Latinoamérica solucionarán </span>
+                    <span class="light-blue">todos estos riesgos</span>
+                    <span> y consideras que tendrán estabilidad y crecimiento económico a futuro, te sugerimos invertir en diversos bonos de las empresas más grandes y estables de LATAM.</span>
                 </div>
             </div>
 
             <div class="content-item" id="panda-zen-content">
-                <h2>Panda Zen (EE.UU)</h2>
-                <p>Bonos estadounidenses con enfoque en sostenibilidad y bajo riesgo.</p>
+                <div class="depositos-header">
+                    <h1>Bonos EE.UU. - Panda Zen</h1>
+                    <p class="dynamic-text"
+                       data-vertical-text="A cambio de prestarle tu dinero a empresas en EE.UU., te pagarán intereses de manera periódica (cupón).Pueden ser compradas o vendidas como las acciones; sin embargo tienen menos movimiento en sus precios (volatilidad). El panda invierte en cerca de 7,000 bonos de empresas."
+                       data-horizontal-text="Dentro de los bonos de empresas de EE.UU. en los que invierte el panda se encuentran empresas como Visa, Amazon, Apple y otras cerca de 7,000 empresas.">
+                        <span class="turn-gray">A cambio de prestarle tu dinero a empresas en EE.UU.,</span>
+                        <span> te pagarán intereses de manera periódica </span>
+                        <span class="turn-gray">(cupón). Pueden ser compradas o vendidas como las acciones; sin embargo,</span>
+                        <span> tienen menos movimiento en sus precios</span>
+                        <span class="turn-gray">(volatilidad). El panda invierte en cerca de 7,000 bonos de empresas.</span>
+                    </p>
+                </div>
+                <div class="depositos-container">
+                    <div class="depositos-column risks-column">
+                        <h1>Riesgos</h1>
+                        <ul class="risks-list">
+                            <li><strong class="titles">Tasas de interés.</strong> Si la tasa de interés sube, el precio de los bonos baja, lo que reduce el valor del Panda. Si la tasa disminuye, los bonos suben de precio y el valor del Panda también.</li>
+                            <li><strong class="titles">Crédito.</strong> Si la situacion económica de EE.UU. se complica, las empresas podrían enfrentar dificultades para cumplir con sus pagos (cupones).</li>
+                            <li><strong class="titles">Inflación.</strong> Si la inflacion aumenta, el valor (poder adquisitivo) del dinero que recibes por intereses (cupones) de esos bonos podría disminuir en el tiempo.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 2: Espacio para iPhone -->
+                    <div class="iphone-placeholder">
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/BONOS_EEUU.png" alt="Primera imagen">
+                            <img class="image-acciones second-image" src="./assets/BONOS_EEUU_CELULAR_VOLTEADO.png" alt="Segunda imagen">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                            <button class="layout-button horizontal"></button>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3: Beneficios -->
+                    <div class="depositos-column benefits-column">
+                        <h1>Beneficios</h1>
+                        <ul class="benefits-list">
+                            <li><strong class="titles">Profundidad y Liquidez.</strong> Hay muchos compradores y vendedores de los bonos que componen al Panda Zen, lo que facilita su negociación.</li>
+                            <li><strong class="titles">Diversificación.</strong> El Panda Zen te permite acceder a cerca de 7 mil bonos lo cual disminuye el riesgo de crédito.</li>
+                            <li><strong class="titles">Costo.</strong> Puedes invertir en miles de bonos de empresas de EE.UU. a la vez de la forma más barata posible.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="depositos-footer">
+                    <span class="light-blue">Si has trabajado a lo largo de tu vida y quieres vivir de tu renta,</span>
+                    <span> el panda es una opción para ti ya que distribuye una tasa de interés trimestralmente; mientras que tu patrimonio crecerá lentamente en el largo plazo.</span>
+                </div>
             </div>
 
             <div class="content-item" id="bienes-raices-content">
-                <h2>Bienes raíces</h2>
-                <p>Inversión en propiedades físicas o fondos de inversión inmobiliaria.</p>
+                <div class="depositos-header">
+                    <h1>Bienes raíces - Real Estate</h1>
+                    <p class="dynamic-text"
+                       data-vertical-text="Tipo de inversión en el que se destina dinero a la compra o desarrollo de departamentos, casas, oficinas, etc. (proyectos inmobiliarios) y la rentabilidad proviene de un pago recurrente (alquiler)."
+                       data-horizontal-text="Lo que se espera al invertir en bienes raíces es una rentabilidad dada por los alquileres y por la apreciación de los inmuebles. La apreciación depende de muchos factores como económicos y políticos.">
+                        <span class="turn-gray">Tipo de inversión en el que se destina dinero a la compra o desarrollo de departamentos, casas, oficinas, etc. (proyectos inmobiliarios) y</span>
+                        <span> la rentabilidad proviene de un pago recurrente </span>
+                        <span class="turn-gray"> (alquiler).</span>
+                    </p>
+                </div>
+                <div class="depositos-container">
+                    <div class="depositos-column risks-column">
+                        <h1>Riesgos</h1>
+                        <ul class="risks-list">
+                            <li><strong class="titles">Liquidez.</strong> Vender una propiedad puede tomar tiempo y, en caso de necesitar el efectivo, podrías aceptar un precio inferior al deseado.</li>
+                            <li><strong class="titles">Financiero.</strong> Si financias la compra con una hipoteca, corres el riesgo de no poder cubrir la cuota con los ingresos del alquiler; o que el costo de tu deuda aumente si las tasas de interés se incrementan.</li>
+                            <li><strong class="titles">Ocupación.</strong> Si no logras alquilar el inmueble de manera consistente y cuentas con una hipoteca, tendrías que  hacerte cargo de la cuota mensual con tus ahorros.</li>
+                            <li><strong class="titles">Ubicación.</strong> Si el inmueble está en una zona con alta delincuencia o poco desarrollo económico, será difícil que se revalorice.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 2: Espacio para iPhone -->
+                    <div class="iphone-placeholder">
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/ALQUILER-2.png" alt="Primera imagen">
+                            <img class="image-acciones second-image" src="./assets/ALQUILER_CELULAR_VOLTEADO.png" alt="Primera imagen">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                            <button class="layout-button horizontal"></button>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3: Beneficios -->
+                    <div class="depositos-column benefits-column">
+                        <h1>Beneficios</h1>
+                        <ul class="benefits-list">
+                            <li><strong class="titles">Materialidad.</strong>  Te permite ver materialmente tu inversión.</li>
+                            <li><strong class="titles">Realización.</strong> Muchas veces representa un logro o la realización de un sueño para muchas personas. </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="depositos-footer">
+                    <span>Si estás dispuesto a asumir todos estos riesgos, te sugerimos invertir con un  experto en bienes raíces que cuente con cáracter, amplia experiencia y que sea de confianza. </span>
+                </div>
             </div>
 
             <div class="content-item" id="factoring-content">
-                <h2>Factoring</h2>
-                <p>Financiamiento mediante la compra de cuentas por cobrar de empresas.</p>
+                <div class="depositos-header">
+                    <h1>Factoring</h1>
+                    <span class="turn-gray">Imagina que tu empresa le vendió una computadora a otra empresa y esta te pagará aun en 3 meses (facturas), pero necesitas urgente el dinero. Para salir de este apuro financiero puedes llamar al banco y ofrecerle que ellos </span>
+                    <span>se lleven el cobro de la totalidad de esa deuda</span>
+                    <span class="turn-gray">  a cambio de que te den una parte de ese dinero.</span>
+                </div>
+                <div class="depositos-container">
+                    <div class="depositos-column risks-column">
+                        <h1>Riesgos</h1>
+                        <ul class="risks-list">
+                            <li><strong class="titles">Liquidez.</strong> Tu dinero al depender de que las facturas sean pagadas en plazos futuros, podrías enfrentar restricciones al retirar tu dinero.</li>
+                            <li><strong class="titles">Crédito.</strong>  Si la empresa deudora,  no paga la factura, puedes perder parte de tu dinero.</li>
+                            <li><strong class="titles">Selección de empresas.</strong> Si la empresa encargada de administrar el fondo de factoring no realiza una selección adecuada de las empresas, podría generar pérdidas importantes.</li>
+                            <li><strong class="titles">Recesión/Bajo crecimiento.</strong> Si la economía se ralentiza o decrece, las empresas deudoras podrían experimentar bajos niveles de ingresos lo que podría ocasionar que enfrente problemas para pagar las facturas.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna 2: Espacio para iPhone -->
+                    <div class="iphone-placeholder">
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/FACTORING.png" alt="Primera imagen">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3: Beneficios -->
+                    <div class="depositos-column benefits-column">
+                        <h1>Beneficios</h1>
+                        <ul class="benefits-list">
+                            <li><strong class="titles">Tasas de interés elevada.</strong>  Para compensar los riesgos que asumirías te ofrecen pagos de intereses elevados.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="depositos-footer">
+                    <span>Si conoces a profunidad el funcionamiento y los riesgos que conllevan invertir en factoring,</span>
+                    <span class="light-blue">  opta por empresas que tengan experiencia demostrada y track récord de rentabilidad impecables.</span>
+                </div>
             </div>
 
             <div class="content-item" id="notas-estructuradas-content">
-                <h2>Notas Estructuradas</h2>
-                <p>Productos financieros que combinan un bono con derivados para perfiles específicos.</p>
-            </div>
+                <div class="depositos-header">
+                    <h1>Notas estructuradas</h1>
+                    <span class="turn-gray">Es una inversión que</span>
+                    <span> combina bonos y acciones,</span>
+                    <span class="turn-gray"> diseñada para intentar proteger el capital del inversionista frente a la volatilidad mientras genera rentabilidad. Se trata de una estrategia compleja, ideal para expertos en inversiones.</span>
+                </div>
+                <div class="depositos-container">
+                    <div class="depositos-column risks-column">
+                        <h1>Riesgos</h1>
+                        <ul class="risks-list">
+                            <li><strong class="titles">Volatilidad.</strong> Los precios de las acciones pueden sufrir movimientos violentos hacia arriba o hacia abajo.</li>
+                            <li><strong class="titles">Crédito.</strong> Las empresas en las que invierten las notas estructuradas pueden enfrentar problemas financieros que afecten la capacidad de pago (intereses y capital) </li>
+                            <li><strong class="titles">Liquidez.</strong> Si necesitas retirar tu dinero, tendrías que esperar que se cumpla el plazo de la nota estructurada. Caso contrario, podrías enfrentar penalizaciones.</li>
+                            <li><strong class="titles">Mercado.</strong> Si el precio de las acciones no suben lo suficiente, no obtienes la rentabilidad más importante.</li>
+                            <li><strong class="titles">Conocimiento.</strong> Al tener una composición diversa, se requiere un alto conocimiento para entenderlas.</li>
+                        </ul>
+                    </div>
 
-            <div class="content-item" id="deuda-privada-content">
-                <h2>Deuda Privada</h2>
-                <p>Préstamos directos a empresas no cotizadas en bolsa con rentabilidades atractivas.</p>
+                    <!-- Columna 2: Espacio para iPhone -->
+                    <div class="iphone-placeholder">
+                        <div class="iphone-image">
+                            <img class="image-acciones first-image" src="./assets/NOTAS_ESTRUCTURADAS.png" alt="Primera imagen">
+                        </div>
+                        <div class="layout-buttons">
+                            <button class="layout-button vertical active"></button>
+                        </div>
+                    </div>
+
+                    <!-- Columna 3: Beneficios -->
+                    <div class="depositos-column benefits-column">
+                        <h1>Beneficios</h1>
+                        <ul class="benefits-list">
+                            <li><strong class="titles">Protección de capital.</strong> Algunas notas estructuras ofrecen la proteccion total o parcial del capital invertido.</li>
+                            <li><strong class="titles">Personalización.</strong>  Pueden diseñarse con distintos niveles de riesgo y rentabilidad, dependiendo de las necesidades del inversionista.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="depositos-footer">
+                    <span>Si cuentas con el conocimiento necesario sobre el funcionamiento de las notas estructuradas y los riesgos que conllevan, recomendamos invertir</span>
+                    <span class="light-blue"> con un tercero con experiencia y etica necesaria.</span>
+                </div>
             </div>
             </div>
 
         </div>
-    </div>
     <div id="animals">
         <h1 class="animal-phrase">
             <span class="animal-highlight">Y más importante que la rentabilidad,</span>

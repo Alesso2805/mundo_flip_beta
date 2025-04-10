@@ -27,18 +27,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const navItems = document.querySelectorAll('.nav-item, .submenu-item');
+    const actionsButton = document.querySelector('.nav-item[data-target="acciones"]'); // Botón "Acciones"
+    const bonosButton = document.querySelector('.nav-item[data-target="bonos"]'); // Botón "Bonos"
 
     navItems.forEach(item => {
-        item.addEventListener('click', function(e) {
+        item.addEventListener('click', function (e) {
+            if (this === actionsButton || this === bonosButton) {
+                e.preventDefault();
+                document.querySelectorAll('.submenu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+
+                const submenu = this.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    submenu.style.display = 'block';
+                }
+                return;
+            }
+
             e.preventDefault();
-
-            // Remover clase active de todos los items
             navItems.forEach(i => i.classList.remove('active'));
-
-            // Agregar clase active al item clickeado
             this.classList.add('active');
 
-            // Mostrar el contenido correspondiente
             const target = this.getAttribute('data-target');
             const contentItems = document.querySelectorAll('.content-item');
 
@@ -49,23 +59,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Manejar submenús
             if (this.classList.contains('nav-item')) {
                 const submenu = this.nextElementSibling;
                 if (submenu && submenu.classList.contains('submenu')) {
-                    // Cerrar otros submenús
                     document.querySelectorAll('.submenu').forEach(menu => {
                         if (menu !== submenu) menu.style.display = 'none';
                     });
 
-                    // Alternar el submenú actual
-                    if (submenu.style.display === 'block') {
-                        submenu.style.display = 'none';
-                    } else {
-                        submenu.style.display = 'block';
-                    }
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
                 } else {
-                    // Cerrar todos los submenús si se clickea un item sin submenú
                     document.querySelectorAll('.submenu').forEach(menu => {
                         menu.style.display = 'none';
                     });
@@ -74,7 +76,81 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Activar el primer item por defecto
+    const navItemsWithSubmenu = document.querySelectorAll('.has-submenu > .nav-item');
+
+    navItemsWithSubmenu.forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
+        });
+    });
+
+    const submenuItems = document.querySelectorAll('.submenu-item');
+    submenuItems.forEach(submenuItem => {
+        submenuItem.addEventListener('click', function () {
+            const parentSubmenu = this.closest('.submenu');
+            if (parentSubmenu) {
+                parentSubmenu.style.display = 'none';
+            }
+        });
+    });
+
+    document.addEventListener('click', function (e) {
+        const isClickInside = e.target.closest('.has-submenu');
+        if (!isClickInside) {
+            document.querySelectorAll('.submenu').forEach(menu => {
+                menu.style.display = 'none';
+            });
+        }
+    });
+
+    const layoutButtons = document.querySelectorAll('.layout-button');
+
+    layoutButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const container = this.closest('.iphone-placeholder');
+            const risks = container.parentElement.querySelector('.risks-column');
+            const benefits = container.parentElement.querySelector('.benefits-column');
+            const firstImage = container.querySelector('.first-image');
+            const secondImage = container.querySelector('.second-image');
+            const textElement = document.querySelector('.content-item.active .dynamic-text');
+
+            // If the button is already active, do nothing
+            if (this.classList.contains('active')) {
+                return;
+            }
+
+            // Toggle the active class between buttons
+            container.querySelectorAll('.layout-button').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            if (this.classList.contains('horizontal')) {
+                risks?.classList.add('hidden');
+                benefits?.classList.add('hidden');
+
+                firstImage.style.transform = 'rotate(-90deg) scale(1.5)';
+                firstImage.style.opacity = '0';
+                secondImage.style.transform = 'rotate(-90deg) scale(1.5)';
+                secondImage.style.opacity = '1';
+
+                // ✅ CAMBIO AQUÍ
+                const horizontalText = textElement.getAttribute('data-horizontal-text');
+                if (horizontalText) textElement.textContent = horizontalText;
+            } else {
+                risks?.classList.remove('hidden');
+                benefits?.classList.remove('hidden');
+
+                secondImage.style.transform = 'rotate(0deg) scale(1)';
+                secondImage.style.opacity = '0';
+                firstImage.style.opacity = '1';
+                firstImage.style.transform = 'rotate(0deg) scale(1)';
+
+                // ✅ CAMBIO AQUÍ
+                const verticalText = textElement.getAttribute('data-vertical-text');
+                if (verticalText) textElement.textContent = verticalText;
+            }
+        });
+    });
+
     if (navItems.length > 0) {
         navItems[0].click();
     }
