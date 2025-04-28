@@ -168,13 +168,11 @@ body {
 
 .hero-section {
     min-height: 100vh; /* Hace que el contenedor ocupe toda la pantalla */
-    background-image: url('./assets/man-space.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
     color: #fff;
-    padding: 4rem;
     position: relative;
     object-fit: contain;
 }
@@ -233,7 +231,8 @@ body {
 }
 
 .highlight1 {
-    color: #004B58; /* primer color, por ejemplo azul */
+    color: #0DB7D4; /* primer color, por ejemplo azul */
+    font-weight: bold;
 }
 
 .highlight2 {
@@ -672,4 +671,54 @@ li {
     opacity: 1;
     z-index: 2;
     transform: rotate(0deg);
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    width: calc(100% * 2); /* Ajusta el ancho según el número de slides */
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.slide {
+    width: 50%; /* Cada slide ocupa la mitad del contenedor */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.slider-buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.slider-buttons button {
+    background-color: #53613e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.slider-buttons button:hover {
+    background-color: #748E54;
+}
+
+#prev-slide, #next-slide  {
+    border-radius: 20px;
+    width: 10%;
 }
