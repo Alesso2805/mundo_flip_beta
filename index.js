@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const a = 250;
-    const b = 100;
-    const centerX = 300;
-    const centerY = 130;
+    const a = 350;
+    const b = 200;
+    const centerX = 450;
+    const centerY = 250;
     let angle = 0; // Ángulo inicial
 
     const planets = [
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentIndex = 0;
                 updateSlide(currentIndex);
             }
-        }, 5000);
+        }, 400000);
     }
 
     function resetAutoSlide() {

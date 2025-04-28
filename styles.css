@@ -104,12 +104,16 @@ body {
 
 .ellipse-container {
     position: relative;
-    width: 600px;
-    height: 300px;
+    width: 900px;
+    height: 600px;
     margin: 4rem auto;
     display: flex; /* Asegura que los elementos se centren */
     justify-content: center; /* Centra la imagen horizontalmente */
-    align-items: center; /* Centra la imagen verticalmente */
+    left: 20%; /* Mueve el contenedor al borde derecho */
+    top: 30%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta el centrado vertical */
+    flex-direction: column; /* Asegura que los elementos dentro estén en columna */
+    align-items: flex-start; /* Alinea los elementos dentro del contenedor */
 }
 
 .ellipse {
@@ -136,7 +140,7 @@ body {
     & h1 {
         margin: 0; /* elimina los márgenes por defecto */
         line-height: 1.5; /* comp ensa el espacio entre líneas */
-        background: linear-gradient(to right, white, #888888); /* blanco a plomo */
+        background: linear-gradient(to right, #00E5FF, #FFFFFF); /* blanco a plomo */
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -162,7 +166,7 @@ body {
 
 .planet {
     position: relative;
-    height: 100px;
+    height: 140px;
     object-fit: contain;
 }
 
@@ -205,6 +209,20 @@ body {
 .text-container {
     flex: 1;
     text-align: left; /* ← Esto alinea todo el texto a la izquierda */
+}
+
+.first-phrase-prev-slider {
+    font-size: 3em;
+    font-weight: 700
+}
+
+.second-phrase-prev-slider {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #575151;
+    text-align: left;
+    margin-bottom: 0
 }
 
 .first-phrase {
@@ -721,4 +739,9 @@ li {
 #prev-slide, #next-slide  {
     border-radius: 20px;
     width: 10%;
+}
+
+.prev-slider {
+    padding: 0 1rem;
+    font-weight: 500;
 }
