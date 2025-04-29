@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentIndex = 0;
                 updateSlide(currentIndex);
             }
-        }, 400000);
+        }, 5000);
     }
 
     function resetAutoSlide() {
