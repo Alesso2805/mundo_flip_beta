@@ -1,8 +1,96 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const a = 350;
-    const b = 200;
-    const centerX = 450;
-    const centerY = 250;
+    const selectors = [
+        document.getElementById('investmentSelector'),
+        document.getElementById('investmentSelector2')
+    ];
+
+    const selectedValues = [
+        selectors[0].querySelector('.title').textContent.trim(),
+        selectors[1].querySelector('.title').textContent.trim()
+    ];
+
+    selectors.forEach((selector, idx) => {
+        const toggle = selector.querySelector('.selected');
+        const titleEl = selector.querySelector('.title');
+        const subEl = selector.querySelector('.subtitle');
+
+        toggle.addEventListener('click', () => {
+            selector.classList.toggle('open');
+        });
+
+        selector.querySelectorAll('.options li').forEach(li => {
+            li.addEventListener('click', () => {
+                const selectedTitle = li.dataset.title;
+                const selectedSub = li.dataset.sub;
+                const otherIdx = idx === 0 ? 1 : 0;
+                const otherSelector = selectors[otherIdx];
+                const otherTitleEl = otherSelector.querySelector('.title');
+                const otherSubEl = otherSelector.querySelector('.subtitle');
+
+                // Actualizar selección actual
+                titleEl.textContent = selectedTitle;
+                subEl.textContent = selectedSub;
+                selector.classList.remove('open');
+                selectedValues[idx] = selectedTitle;
+
+                // Si el otro selector ya tenía esta opción, cambiarlo automáticamente
+                if (selectedValues[otherIdx] === selectedTitle) {
+                    const allOptions = Array.from(otherSelector.querySelectorAll('.options li'));
+                    const newOption = allOptions.find(opt => opt.dataset.title !== selectedTitle);
+
+                    if (newOption) {
+                        otherTitleEl.textContent = newOption.dataset.title;
+                        otherSubEl.textContent = newOption.dataset.sub;
+                        selectedValues[otherIdx] = newOption.dataset.title;
+                    }
+                }
+            });
+        });
+
+        // Cerrar si se hace clic fuera
+        document.addEventListener('click', e => {
+            if (!selector.contains(e.target)) {
+                selector.classList.remove('open');
+            }
+        });
+    });
+
+
+    // Actualización del texto editable con valor por defecto
+    const investment = document.getElementById('wt1-investment');
+    const years = document.getElementById('wt1-years');
+
+    [investment, years].forEach(el => {
+        el.addEventListener('focus', function() {
+            if (el.textContent === el.getAttribute('data-default')) {
+                el.textContent = '';
+            }
+        });
+
+        el.addEventListener('blur', function() {
+            if (el.textContent === '') {
+                el.textContent = el.getAttribute('data-default');
+            }
+        });
+
+        // Validar que solo se ingresen números
+        el.addEventListener('input', () => {
+            el.textContent = el.textContent.replace(/[^0-9]/g, '');
+        });
+
+        // Prevenir pegar letras
+        el.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text');
+            const numbersOnly = text.replace(/[^0-9]/g, '');
+            document.execCommand('insertText', false, numbersOnly);
+        });
+    });
+
+    const a = 250;
+    const b = 150;
+    const centerX = 300;
+    const centerY = 190;
     let angle = 0; // Ángulo inicial
 
     const planets = [
