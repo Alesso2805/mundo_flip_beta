@@ -211,19 +211,57 @@ body {
     text-align: left; /* ← Esto alinea todo el texto a la izquierda */
 }
 
+.slide {
+    width: 100%;
+    height: 100vh; /* Igual al primer slide */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: none;
+}
+
+.prev-slider {
+    padding: 2rem;
+    flex: 0.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+}
+
+.image-container {
+    flex: 0.9;
+    width: 100%;
+    height: 100%; /* asegúrate de que hereda el alto del padre */
+    position: relative;
+}
+
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ← evita recorte */
+    object-position: 5% center; /* o left center, según lo que quieres mostrar */
+}
+
 .first-phrase-prev-slider {
-    font-size: 3em;
-    font-weight: 700
+    font-size: 2em;
+    font-weight: 700;
+    text-align: left;
 }
 
 .second-phrase-prev-slider {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1em;
     line-height: 1.5;
-    color: #575151;
+    color: #f0f0f0;
     text-align: left;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
+
 
 .first-phrase {
     font-weight: 500;
@@ -705,12 +743,6 @@ li {
     transition: transform 1s ease-in-out;
 }
 
-.slide {
-    width: 50%; /* Cada slide ocupa la mitad del contenedor */
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-}
 
 .slider-buttons {
     position: absolute;
@@ -739,11 +771,6 @@ li {
 #prev-slide, #next-slide  {
     border-radius: 20px;
     width: 10%;
-}
-
-.prev-slider {
-    padding: 0 1rem;
-    font-weight: 500;
 }
 
 .main-background {
