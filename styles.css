@@ -63,6 +63,61 @@ body {
     filter: brightness(80%);
 }
 
+.hero-section {
+    width: 100%;
+    height: 110vh;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    object-fit: contain;
+}
+
+.slider {
+    display: flex;
+    width: calc(100% * 2); /* Ajusta el ancho según el número de slides */
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 110vh;
+    object-fit: cover;
+    z-index: -1; /* Para que se quede al fondo */
+}
+
+.slide {
+    position: relative; /* Necesario para que el z-index del fondo funcione */
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.h1-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    & h1 {
+        margin: 0; /* elimina los márgenes por defecto */
+        line-height: 1.5; /* comp ensa el espacio entre líneas */
+        background: linear-gradient(to right, #00E5FF, #FFFFFF); /* blanco a plomo */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
 .orbit-background {
     position: absolute;
     top: 50%;
@@ -127,23 +182,8 @@ body {
 
 .planet {
     position: absolute;
-    height: 100px;
+    height: 115px;
     object-fit: contain;
-}
-
-.h1-container {
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 30px;
-    & h1 {
-        margin: 0; /* elimina los márgenes por defecto */
-        line-height: 1.5; /* comp ensa el espacio entre líneas */
-        background: linear-gradient(to right, #00E5FF, #FFFFFF); /* blanco a plomo */
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
 }
 
 .planet-container {
@@ -159,26 +199,9 @@ body {
 .planet-label {
     color: white;
     font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
     pointer-events: none;
-}
-
-.planet {
-    position: relative;
-    height: 115px;
-    object-fit: contain;
-}
-
-.hero-section {
-    min-height: 100vh; /* Hace que el contenedor ocupe toda la pantalla */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    text-align: center;
-    color: #fff;
-    position: relative;
-    object-fit: contain;
 }
 
 .screen {
@@ -211,14 +234,6 @@ body {
     text-align: left; /* ← Esto alinea todo el texto a la izquierda */
 }
 
-.slide {
-    width: 100%;
-    height: 100vh; /* Igual al primer slide */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background: none;
-}
 
 .prev-slider {
     padding: 2rem;
@@ -238,7 +253,6 @@ body {
 
 
 .slide-image {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -257,7 +271,7 @@ body {
     font-weight: 500;
     font-size: 1em;
     line-height: 1.5;
-    color: #f0f0f0;
+    color: #575151;
     text-align: left;
     margin-bottom: 0;
 }
@@ -729,20 +743,6 @@ li {
     transform: rotate(0deg);
 }
 
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.slider {
-    display: flex;
-    width: calc(100% * 2); /* Ajusta el ancho según el número de slides */
-    height: 100%;
-    transition: transform 1s ease-in-out;
-}
-
 
 .slider-buttons {
     position: absolute;
@@ -777,7 +777,8 @@ li {
     background: linear-gradient(180deg, #0d6769 0%, #76b06e 100%);
     color: #f6f6f9;
     /* Reemplazamos height:100% por min-height */
-    min-height: 100vh;
+    min-height: 140vh;
+    padding: 0 2rem;
 }
 .flex-panel {
     display: flex;
