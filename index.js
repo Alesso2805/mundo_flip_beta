@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const volatilidades = [
+        { "Acción": "Acciones Perú", "Volatilidad 10 años": "22.79%", "Volatilidad 15 años": "22.64%", "Volatilidad 3 años": "22.14%", "Volatilidad 5 años": "25.00%" },
+        { "Acción": "Acciones Europeas", "Volatilidad 10 años": "21.11%", "Volatilidad 15 años": "23.72%", "Volatilidad 3 años": "20.30%", "Volatilidad 5 años": "22.27%" },
+        { "Acción": "Cobra achorada (Acciones EE.UU.)", "Volatilidad 10 años": "17.64%", "Volatilidad 15 años": "17.05%", "Volatilidad 3 años": "16.98%", "Volatilidad 5 años": "18.47%" },
+        { "Acción": "Real Estate ", "Volatilidad 10 años": "0.25%", "Volatilidad 15 años": "0.51%", "Volatilidad 3 años": "0.18%", "Volatilidad 5 años": "0.19%" },
+        { "Acción": "Inflación Perú", "Volatilidad 10 años": "0.23%", "Volatilidad 15 años": "0.21%", "Volatilidad 3 años": "0.28%", "Volatilidad 5 años": "0.27%" },
+        { "Acción": "Depósito a Plazo", "Volatilidad 10 años": "6.35%", "Volatilidad 15 años": "5.53%", "Volatilidad 3 años": "6.58%", "Volatilidad 5 años": "7.58%" },
+        { "Acción": "Panda Zen (Bonos EE.UU)", "Volatilidad 10 años": "5.22%", "Volatilidad 15 años": "4.57%", "Volatilidad 3 años": "6.26%", "Volatilidad 5 años": "6.34%" },
+        { "Acción": "Bonos Latam", "Volatilidad 10 años": "5.58%", "Volatilidad 15 años": "5.15%", "Volatilidad 3 años": "4.80%", "Volatilidad 5 años": "5.79%" }
+    ];
+
     const selectors = [
         document.getElementById('investmentSelector'),
         document.getElementById('investmentSelector2')
@@ -8,6 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
         selectors[0].querySelector('.title').textContent.trim(),
         selectors[1].querySelector('.title').textContent.trim()
     ];
+
+    function actualizarVolatilidad(selectorIdx, title, sub) {
+        const key = `Volatilidad ${aniosSeleccionados} años`;
+        const fullTitle = (title + ' ' + sub).trim().toLowerCase();
+        const match = volatilidades.find(v => v["Acción"].trim().toLowerCase() === fullTitle);
+
+        if (match && match[key]) {
+            document.getElementById(`volatilidadValor${selectorIdx === 0 ? '' : '2'}`).innerText = match[key];
+        } else {
+            document.getElementById(`volatilidadValor${selectorIdx === 0 ? '' : '2'}`).innerText = 'N/A';
+        }
+    }
+
 
     selectors.forEach((selector, idx) => {
         const toggle = selector.querySelector('.selected');
@@ -39,11 +63,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     const newOption = allOptions.find(opt => opt.dataset.title !== selectedTitle);
 
                     if (newOption) {
-                        otherTitleEl.textContent = newOption.dataset.title;
-                        otherSubEl.textContent = newOption.dataset.sub;
-                        selectedValues[otherIdx] = newOption.dataset.title;
+                        const newTitle = newOption.dataset.title;
+                        const newSub = newOption.dataset.sub;
+
+                        otherTitleEl.textContent = newTitle;
+                        otherSubEl.textContent = newSub;
+                        selectedValues[otherIdx] = newTitle;
+
+                        // ✅ Actualizar volatilidad del otro selector
+                        actualizarVolatilidad(otherIdx, newTitle, newSub);
                     }
                 }
+
             });
         });
 
@@ -208,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentIndex = 0;
                 updateSlide(currentIndex);
             }
-        }, 4000000);
+        }, 4000);
     }
 
     function resetAutoSlide() {
@@ -309,4 +340,36 @@ document.addEventListener('DOMContentLoaded', function () {
         navItems[0].click();
     }
     animateOrbit();
+
+    let aniosSeleccionados = parseInt(document.getElementById('wt1-years').innerText) || 10;
+
+    document.getElementById('wt1-years').addEventListener('input', (e) => {
+        const valor = parseInt(e.target.innerText);
+        if (!isNaN(valor)) {
+            aniosSeleccionados = valor;
+        }
+    });
+
+    function setupDropdown(selector, valorId, updateSelected = false) {
+        document.querySelectorAll(`${selector} .options li`).forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.getAttribute('data-title');
+                const sub = item.getAttribute('data-sub');
+                const fullTitle = (title + ' ' + sub).trim();
+
+                const key = `Volatilidad ${aniosSeleccionados} años`;
+                const match = volatilidades.find(v => v["Acción"].trim().toLowerCase() === fullTitle.toLowerCase());
+
+                document.getElementById(valorId).innerText = match?.[key] || 'N/A';
+
+                if (updateSelected) {
+                    const selected = document.querySelector(`${selector} .selected`);
+                    selected.querySelector('.title').innerText = title;
+                    selected.querySelector('.subtitle').innerText = sub;
+                }
+            });
+        });
+    }
+    setupDropdown('#investmentSelector', 'volatilidadValor');
+    setupDropdown('#investmentSelector2', 'volatilidadValor2', true);
 });
