@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     const volatilidades = [
         { "Acción": "Acciones Perú", "Volatilidad 10 años": "22.79%", "Volatilidad 15 años": "22.64%", "Volatilidad 3 años": "22.14%", "Volatilidad 5 años": "25.00%" },
         { "Acción": "Acciones Europeas", "Volatilidad 10 años": "21.11%", "Volatilidad 15 años": "23.72%", "Volatilidad 3 años": "20.30%", "Volatilidad 5 años": "22.27%" },
-        { "Acción": "Cobra achorada (Acciones EE.UU.)", "Volatilidad 10 años": "17.64%", "Volatilidad 15 años": "17.05%", "Volatilidad 3 años": "16.98%", "Volatilidad 5 años": "18.47%" },
+        { "Acción": "Cobra achorada", "Volatilidad 10 años": "17.64%", "Volatilidad 15 años": "17.05%", "Volatilidad 3 años": "16.98%", "Volatilidad 5 años": "18.47%" },
         { "Acción": "Real Estate ", "Volatilidad 10 años": "0.25%", "Volatilidad 15 años": "0.51%", "Volatilidad 3 años": "0.18%", "Volatilidad 5 años": "0.19%" },
         { "Acción": "Inflación Perú", "Volatilidad 10 años": "0.23%", "Volatilidad 15 años": "0.21%", "Volatilidad 3 años": "0.28%", "Volatilidad 5 años": "0.27%" },
         { "Acción": "Depósito a Plazo", "Volatilidad 10 años": "6.35%", "Volatilidad 15 años": "5.53%", "Volatilidad 3 años": "6.58%", "Volatilidad 5 años": "7.58%" },
-        { "Acción": "Panda Zen (Bonos EE.UU)", "Volatilidad 10 años": "5.22%", "Volatilidad 15 años": "4.57%", "Volatilidad 3 años": "6.26%", "Volatilidad 5 años": "6.34%" },
+        { "Acción": "Panda Zen", "Volatilidad 10 años": "5.22%", "Volatilidad 15 años": "4.57%", "Volatilidad 3 años": "6.26%", "Volatilidad 5 años": "6.34%" },
         { "Acción": "Bonos Latam", "Volatilidad 10 años": "5.58%", "Volatilidad 15 años": "5.15%", "Volatilidad 3 años": "4.80%", "Volatilidad 5 años": "5.79%" }
     ];
 
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectors[0].querySelector('.title').textContent.trim(),
         selectors[1].querySelector('.title').textContent.trim()
     ];
+
 
     function actualizarVolatilidad(selectorIdx, title, sub) {
         const key = `Volatilidad ${aniosSeleccionados} años`;
@@ -46,10 +48,14 @@ document.addEventListener('DOMContentLoaded', function () {
             li.addEventListener('click', () => {
                 const selectedTitle = li.dataset.title;
                 const selectedSub = li.dataset.sub;
+
                 const otherIdx = idx === 0 ? 1 : 0;
                 const otherSelector = selectors[otherIdx];
                 const otherTitleEl = otherSelector.querySelector('.title');
                 const otherSubEl = otherSelector.querySelector('.subtitle');
+
+                const prevThisTitle = selectedValues[idx];          // Guardamos el valor actual de este selector
+                const prevOtherTitle = selectedValues[otherIdx];    // Guardamos el valor actual del otro selector
 
                 // Actualizar selección actual
                 titleEl.textContent = selectedTitle;
@@ -57,24 +63,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 selector.classList.remove('open');
                 selectedValues[idx] = selectedTitle;
 
-                // Si el otro selector ya tenía esta opción, cambiarlo automáticamente
+                // Si hay conflicto, restablecer el otro selector al valor anterior del actual
                 if (selectedValues[otherIdx] === selectedTitle) {
-                    const allOptions = Array.from(otherSelector.querySelectorAll('.options li'));
-                    const newOption = allOptions.find(opt => opt.dataset.title !== selectedTitle);
+                    const prevOption = Array.from(otherSelector.querySelectorAll('.options li'))
+                        .find(opt => opt.dataset.title === prevThisTitle);
 
-                    if (newOption) {
-                        const newTitle = newOption.dataset.title;
-                        const newSub = newOption.dataset.sub;
+                    if (prevOption) {
+                        const newTitle = prevOption.dataset.title;
+                        const newSub = prevOption.dataset.sub;
 
                         otherTitleEl.textContent = newTitle;
                         otherSubEl.textContent = newSub;
                         selectedValues[otherIdx] = newTitle;
 
-                        // ✅ Actualizar volatilidad del otro selector
-                        actualizarVolatilidad(otherIdx, newTitle, newSub);
+                        if (typeof actualizarVolatilidad === 'function') {
+                            actualizarVolatilidad(otherIdx, newTitle, newSub);
+                        }
                     }
                 }
 
+                if (typeof actualizarVolatilidad === 'function') {
+                    actualizarVolatilidad(idx, selectedTitle, selectedSub);
+                }
             });
         });
 
@@ -117,6 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.execCommand('insertText', false, numbersOnly);
         });
     });
+
+    // FUNCION PARA EL MOVIMIENTO ELIPTICO DE IMAGENES (VARIABLES Y FUNCIONES)
 
     const a = 250;
     const b = 150;
@@ -195,6 +207,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // ---------------------------------------------------------------------- //
+
+    // SECCION DE SLIDER (VARIABLES Y FUNCIONES)
+
     const slider = document.querySelector('.slider');
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.getElementById('prev-slide');
@@ -260,6 +276,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize styles and start the automatic sliding
     updateButtonStyles();
     startAutoSlide();
+
+    // ---------------------------------------------------------------------- //
 
     const navItemsWithSubmenu = document.querySelectorAll('.has-submenu > .nav-item');
 
@@ -341,35 +359,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     animateOrbit();
 
-    let aniosSeleccionados = parseInt(document.getElementById('wt1-years').innerText) || 10;
+    const compararBtn = document.getElementById('compararBtn');
 
-    document.getElementById('wt1-years').addEventListener('input', (e) => {
-        const valor = parseInt(e.target.innerText);
-        if (!isNaN(valor)) {
-            aniosSeleccionados = valor;
+    compararBtn.addEventListener('click', () => {
+        const yearsInput = document.getElementById('wt1-years');
+        const years = parseInt(yearsInput.textContent.trim()) || yearsInput.dataset.default;
+
+        const selector1 = document.querySelector('#investmentSelector .selected');
+        const selector2 = document.querySelector('#investmentSelector2 .selected');
+
+        const opcion1 = selector1 ? selector1.querySelector('.title').textContent.trim() : null;
+        const opcion2 = selector2 ? selector2.querySelector('.title').textContent.trim() : null;
+
+        if (!opcion1 || !opcion2) {
+            alert('Selecciona dos opciones para comparar.');
+            return;
         }
+
+        const key = `Volatilidad ${years} años`;
+
+        // Find the volatility for the selected funds
+        const match1 = volatilidades.find(v => v["Acción"].trim().toLowerCase() === opcion1.toLowerCase());
+        const match2 = volatilidades.find(v => v["Acción"].trim().toLowerCase() === opcion2.toLowerCase());
+
+        const volatilidad1 = match1 ? match1[key] || 'N/A' : 'N/A';
+        const volatilidad2 = match2 ? match2[key] || 'N/A' : 'N/A';
+
+        // Update the HTML elements with the volatility values
+        const firstVolatilityElement = document.getElementById('volatilidadValor');
+        const secondVolatilityElement = document.getElementById('volatilidadValor2');
+
+        if (firstVolatilityElement) {
+            firstVolatilityElement.textContent = volatilidad1;
+        }
+
+        if (secondVolatilityElement) {
+            secondVolatilityElement.textContent = volatilidad2;
+        }
+
+        console.log(`Volatilidad de ${opcion1}: ${volatilidad1}`);
+        console.log(`Volatilidad de ${opcion2}: ${volatilidad2}`);
     });
 
-    function setupDropdown(selector, valorId, updateSelected = false) {
-        document.querySelectorAll(`${selector} .options li`).forEach(item => {
-            item.addEventListener('click', () => {
-                const title = item.getAttribute('data-title');
-                const sub = item.getAttribute('data-sub');
-                const fullTitle = (title + ' ' + sub).trim();
-
-                const key = `Volatilidad ${aniosSeleccionados} años`;
-                const match = volatilidades.find(v => v["Acción"].trim().toLowerCase() === fullTitle.toLowerCase());
-
-                document.getElementById(valorId).innerText = match?.[key] || 'N/A';
-
-                if (updateSelected) {
-                    const selected = document.querySelector(`${selector} .selected`);
-                    selected.querySelector('.title').innerText = title;
-                    selected.querySelector('.subtitle').innerText = sub;
-                }
-            });
-        });
-    }
-    setupDropdown('#investmentSelector', 'volatilidadValor');
-    setupDropdown('#investmentSelector2', 'volatilidadValor2', true);
 });

@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script src="index.js"></script>
+    <script src="comparar.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <!-- flip navbar-->
@@ -537,8 +539,8 @@
                 <p class="compara-text">Compara</p>
                 <div class="selector" id="investmentSelector">
                     <div class="selected">
-                        <span class="title">Cobra achorada</span>
-                        <span class="subtitle">(Acciones EE.UU.)</span>
+                        <span class="title">Elija su accion</span>
+                        <span class="subtitle">(subtitulo)</span>
                     </div>
                     <svg class="arrow" viewBox="0 0 32 32">
                         <polyline points="8 12 16 20 24 12"/>
@@ -547,7 +549,7 @@
                     <ul class="options">
                         <li data-title="Acciones Perú" data-sub="">Acciones Perú</li>
                         <li data-title="Acciones Europeas" data-sub="">Acciones Europeas</li>
-                        <li data-title="Cobra achorada" data-sub="(Acciones EE.UU.)">Cobra achorada <small>(Acciones EE.UU.)</small></li>
+                        <li data-title="Cobra Achorada" data-sub="(Acciones EE.UU.)">Cobra Achorada <small>(Acciones EE.UU.)</small></li>
                         <li data-title="Real Estate" data-sub="">Real Estate </li>
                         <li data-title="Inflación Perú" data-sub="">Inflación Perú </li>
                         <li data-title="Depósito a Plazo" data-sub="">Depósito a Plazo </li>
@@ -557,14 +559,14 @@
                 </div>
             </div>
 
-            <div style="margin-left: 13vw; display: flex; justify-content: center; align-items: center; gap: 40px; padding: 20px; border-radius: 12px; font-family: 'Arial', sans-serif; color: white; width: fit-content;">
+            <div class="final_values" style="margin-left: 13vw; display: flex; justify-content: center; align-items: center; gap: 40px; padding: 20px; border-radius: 12px; font-family: 'Arial', sans-serif; color: white; width: fit-content;">
                 <div style="text-align: center;">
                     <div style="font-size: 16px; margin-bottom: 5px;">se convertían en</div>
-                    <div style="font-size: 32px; font-weight: bold; color: #fef6b4;">$63,115</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #fef6b4;">$ --</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 16px; margin-bottom: 5px;">Con</div>
-                    <div style="font-size: 32px; font-weight: bold; color: #f6a7e7;" id="volatilidadValor">70%</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #f6a7e7;" id="volatilidadValor">-- %</div>
                     <div style="font-size: 14px;">de volatilidad (riesgo)</div>
                 </div>
             </div>
@@ -576,8 +578,8 @@
                 <p class="compara-text">Con</p>
                 <div class="selector" id="investmentSelector2">
                     <div class="selected">
-                        <span class="title">Panda Zen</span>
-                        <span class="subtitle">(Bonos EE.UU.)</span>
+                        <span class="title">Elija su acción</span>
+                        <span class="subtitle">(subtitulo)</span>
                     </div>
                     <svg class="arrow" viewBox="0 0 32 32">
                         <polyline points="8 12 16 20 24 12"/>
@@ -586,9 +588,9 @@
                     <ul class="options">
                         <li data-title="Acciones Perú" data-sub="">Acciones Perú</li>
                         <li data-title="Acciones Europeas" data-sub="">Acciones Europeas</li>
-                        <li data-title="Cobra achorada" data-sub="(Acciones EE.UU.)">Cobra achorada <small>(Acciones EE.UU.)</small></li>
+                        <li data-title="Cobra Achorada" data-sub="(Acciones EE.UU.)">Cobra achorada <small>(Acciones EE.UU.)</small></li>
                         <li data-title="Real Estate" data-sub="">Real Estate </li>
-                        <li data-title="Inflación Perú" data-sub="">Inflación Perú </li>
+                        <li data-title="Inflación Perú" data-sub="">Inflación Perú</li>
                         <li data-title="Depósito a Plazo" data-sub="">Depósito a Plazo </li>
                         <li data-title="Panda Zen" data-sub="(Bonos EE.UU)">Panda Zen <small>(Bonos EE.UU.)</small></li>
                         <li data-title="Bonos Latam" data-sub="">Bonos Latam</li>
@@ -596,23 +598,28 @@
                 </div>
             </div>
 
-            <div style="margin-left: 13vw; display: flex; justify-content: center; align-items: center; gap: 40px; padding: 20px; border-radius: 12px; font-family: 'Arial', sans-serif; color: white; width: fit-content;">
+            <div class="final_values2" style="margin-left: 13vw; display: flex; justify-content: center; align-items: center; gap: 40px; padding: 20px; border-radius: 12px; font-family: 'Arial', sans-serif; color: white; width: fit-content;">
                 <div style="text-align: center;">
                     <div style="font-size: 16px; margin-bottom: 5px;">se convertían en</div>
-                    <div style="font-size: 32px; font-weight: bold; color: #fef6b4;">$63,115</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #fef6b4;">$ --</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="font-size: 16px; margin-bottom: 5px;">Con</div>
-                    <div style="font-size: 32px; font-weight: bold; color: #f6a7e7;" id="volatilidadValor2">70%</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #f6a7e7;" id="volatilidadValor2">-- %</div>
                     <div style="font-size: 14px;">de volatilidad (riesgo)</div>
                 </div>
             </div>
 
+            <div style="display: flex; align-items: center;">
+                <button class="selector" id="compararBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                    Comparar
+                </button>
+            </div>
         </div>
 
         <!-- Lado Derecho -->
         <div class="panel-left std-padding-sides" style="display: flex; justify-content: center; align-items: center; flex-direction: column; position: relative; height: 100%;">
-            <img src="./assets/example-graph.svg" alt="calculation graph" style="max-width: 85%; height: auto;">
+            <canvas id="comparisonChart" style="max-width: 100%; height: 100%;"></canvas>
             <img src="./assets/Cobra-Achorada.png" alt="cobra achorada" style="width: 50%; opacity: 0.3; position: absolute; bottom: 0;">
         </div>
 
