@@ -29,15 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Find the last date in the dataset
                 const lastDate = new Date(data[data.length - 1].Fecha.split('/').reverse().join('-'));
 
+                console.log('Datos recibidos:', lastDate);
+
                 // Calculate the start date based on the input years
                 const startDate = new Date(lastDate);
                 startDate.setFullYear(startDate.getFullYear() - years);
+
+                console.log('Datos recibidos:', startDate);
 
                 // Filter data to include only entries between the start date and the last date
                 const filteredData = data.filter(entry => {
                     const entryDate = new Date(entry.Fecha.split('/').reverse().join('-'));
                     return entryDate >= startDate && entryDate <= lastDate;
                 });
+
+                console.log('Datos recibidos:', data);
 
                 // Sort data in ascending order by date
                 const sortedData = filteredData.sort((a, b) => {
@@ -51,9 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 let previousInvestment1 = investment;
                 let previousInvestment2 = investment;
 
+                console.log('Datos recibidos:', opcion1);
+                console.log('Datos recibidos:', opcion2);
+
+
                 const result = sortedData.map((entry, index) => {
-                    const cuota1 = entry[opcion1];
-                    const cuota2 = entry[opcion2];
+                    const cuota1 = entry[opcion1] || 0;
+                    const cuota2 = entry[opcion2] || 0;
 
                     const adjusted1 = index === 0
                         ? (cuota1 / cuota1) * investment
@@ -75,13 +85,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                 });
 
+                // Filter data based on the input years
+                let interval = 1; // Default interval (weekly)
+                if (years === 5) {
+                    interval = 3; // Every 3 weeks
+                } else if (years === 10) {
+                    interval = 6; // Every 6 weeks
+                } else if (years === 15) {
+                    interval = 8; // Every 2 months (approx. 8 weeks)
+                }
+
+                const filteredResult = result.filter((_, index) => index % interval === 0);
+
                 // Get the last values
                 const lastValue1 = result[result.length - 1]?.[opcion1] || 0;
                 const lastValue2 = result[result.length - 1]?.[opcion2] || 0;
 
-                const labels = result.map(entry => entry.Fecha);
-                const data1 = result.map(entry => entry[opcion1]);
-                const data2 = result.map(entry => entry[opcion2]);
+                const labels = filteredResult.map(entry => entry.Fecha);
+                const data1 = filteredResult.map(entry => entry[opcion1]);
+                const data2 = filteredResult.map(entry => entry[opcion2]);
 
                 // Destroy the previous chart instance if it exists
                 if (chartInstance) {
@@ -98,18 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             {
                                 label: opcion1,
                                 data: data1,
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                borderWidth: 1,
-                                fill: true,
+                                borderColor: 'rgb(236,255,0)',
+                                borderWidth: 2,
+                                fill: false,
+                                pointRadius: 0, // Remove points
+                                pointHoverRadius: 0 // Remove hover effect on points
                             },
                             {
                                 label: opcion2,
                                 data: data2,
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                                borderWidth: 1,
-                                fill: true,
+                                borderColor: 'rgb(255,255,255)',
+                                borderWidth: 2,
+                                fill: false,
+                                pointRadius: 0, // Remove points
+                                pointHoverRadius: 0 // Remove hover effect on points
                             }
                         ]
                     },
@@ -118,29 +142,53 @@ document.addEventListener('DOMContentLoaded', () => {
                         plugins: {
                             legend: {
                                 position: 'top',
+                                labels: {
+                                    color: 'white', // Set legend text color to white
+                                }
                             },
                             title: {
                                 display: true,
-                                text: 'Comparación de Inversiones a lo Largo del Tiempo'
+                                text: 'Comparación de Inversiones a lo Largo del Tiempo',
+                                color: 'white', // Set title text color to white
+                                font: {
+                                    size: 16 // Optional: Adjust font size
+                                }
                             }
+                        },
+                        interaction: {
+                            mode: 'nearest', // Ensure interaction is based on proximity
+                            intersect: false // Allow interaction without intersecting a point
                         },
                         scales: {
                             x: {
                                 title: {
                                     display: true,
-                                    text: 'Fechas'
+                                    text: 'Fechas',
+                                    color: 'white', // Set x-axis title color to white
+                                },
+                                ticks: {
+                                    color: 'white', // Set x-axis tick labels color to white
+                                },
+                                grid: {
+                                    display: false // Remove grid lines on y-axis
                                 }
                             },
                             y: {
                                 title: {
                                     display: true,
-                                    text: 'Valor de la Inversión ($)'
+                                    text: 'Valor de la Inversión ($)',
+                                    color: 'white', // Set y-axis title color to white
+                                },
+                                ticks: {
+                                    color: 'white', // Set y-axis tick labels color to white
+                                },
+                                grid: {
+                                    display: false // Remove grid lines on y-axis
                                 }
                             }
                         }
                     }
                 });
-
                 // Update the HTML elements
                 const firstValueElement = document.querySelector('.final_values div:nth-child(2)');
                 const secondValueElement = document.querySelector('.final_values2 div:nth-child(2)');
