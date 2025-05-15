@@ -29,21 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Find the last date in the dataset
                 const lastDate = new Date(data[data.length - 1].Fecha.split('/').reverse().join('-'));
 
-                console.log('Datos recibidos:', lastDate);
-
                 // Calculate the start date based on the input years
                 const startDate = new Date(lastDate);
                 startDate.setFullYear(startDate.getFullYear() - years);
-
-                console.log('Datos recibidos:', startDate);
 
                 // Filter data to include only entries between the start date and the last date
                 const filteredData = data.filter(entry => {
                     const entryDate = new Date(entry.Fecha.split('/').reverse().join('-'));
                     return entryDate >= startDate && entryDate <= lastDate;
                 });
-
-                console.log('Datos recibidos:', data);
 
                 // Sort data in ascending order by date
                 const sortedData = filteredData.sort((a, b) => {
@@ -56,10 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 let previousCuota2 = null;
                 let previousInvestment1 = investment;
                 let previousInvestment2 = investment;
-
-                console.log('Datos recibidos:', opcion1);
-                console.log('Datos recibidos:', opcion2);
-
 
                 const result = sortedData.map((entry, index) => {
                     const cuota1 = entry[opcion1] || 0;
@@ -86,13 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // Filter data based on the input years
-                let interval = 1; // Default interval (weekly)
+                let interval = 2; // Default interval (weekly)
                 if (years === 5) {
-                    interval = 3; // Every 3 weeks
+                    interval = 8; // Every 3 weeks
                 } else if (years === 10) {
-                    interval = 6; // Every 6 weeks
+                    interval = 12; // Every 6 weeks
                 } else if (years === 15) {
-                    interval = 8; // Every 2 months (approx. 8 weeks)
+                    interval = 20; // Every 2 months (approx. 8 weeks)
                 }
 
                 const filteredResult = result.filter((_, index) => index % interval === 0);
@@ -201,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     secondValueElement.textContent = `$ ${lastValue2.toFixed(2)}`;
                 }
 
-                console.log('Datos ajustados:', result);
             })
             .catch(error => {
                 console.error('Error al comparar:', error);

@@ -181,7 +181,6 @@ body {
 }
 
 .planet {
-    position: absolute;
     height: 115px;
     object-fit: contain;
 }
@@ -200,7 +199,7 @@ body {
     color: white;
     font-weight: 600;
     font-size: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     pointer-events: none;
 }
 

@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentIndex = 0;
                 updateSlide(currentIndex);
             }
-        }, 4000);
+        }, 100000000);
     }
 
     function resetAutoSlide() {
