@@ -796,8 +796,11 @@ li {
 
 
 .std-padding-sides {
-    padding-right: 5vh;
     padding-left: 5vh;
+}
+
+.std-padding-sides2 {
+    padding-right: 5vh;
 }
 
 .main-title {
