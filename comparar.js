@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     countdownDiv.style.display = 'none'; // Ocultarlo inicialmente
     compararBtn.parentNode.insertBefore(countdownDiv, compararBtn.nextSibling); // Insertar debajo del botón
 
-
     let chartInstance = null; // Global variable to store the chart instance
-    let countdownActive = false; // Flag to track if a countdown is active
+    let countdownStarted = false; // Flag to track if the countdown has started
 
     compararBtn.addEventListener('click', () => {
+        if (countdownStarted) {
+            return; // Prevent further actions if countdown is active
+        }
+
         const yearsInput = document.getElementById('wt1-years');
         const investmentInput = document.getElementById('wt1-investment');
         const years = parseInt(yearsInput.textContent.trim()) || yearsInput.dataset.default;
@@ -29,17 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch('http://127.0.0.1:5000/valores_cuota', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({years, opcion1, opcion2})
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ years, opcion1, opcion2 })
         })
             .then(response => {
                 if (response.status === 429) {
                     // Si el servidor devuelve un error 429 (Too Many Requests)
                     const retryAfter = response.headers.get('Retry-After'); // Obtener el tiempo de espera del encabezado
                     const waitTime = retryAfter ? parseInt(retryAfter, 10) : 60; // Usar el valor del encabezado o un valor predeterminado
-                    if (!countdownActive) { // Check if a countdown is already active
-                        startCountdown(waitTime);
-                    }
+                    startCountdown(waitTime);
                     throw new Error('Límite de peticiones alcanzado.');
                 }
                 return response.json();
@@ -220,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function startCountdown(seconds) {
-        countdownActive = true; // Set the flag to indicate a countdown is active
+        countdownStarted = true; // Set the flag to indicate the countdown has started
         countdownDiv.style.display = 'block'; // Mostrar el div
         let remainingTime = seconds;
 
@@ -231,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(updateCountdown, 1000); // Actualizar cada segundo
             } else {
                 countdownDiv.style.display = 'none'; // Ocultar el div cuando termine el tiempo
-                countdownActive = false; // Reset the flag when the countdown ends
+                countdownStarted = false; // Reset the flag when the countdown ends
             }
         };
 
