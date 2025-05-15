@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const compararBtn = document.getElementById('compararBtn');
+    const countdownDiv = document.createElement('div'); // Crear el div para el countdown
+    countdownDiv.style.color = 'red';
+    countdownDiv.style.marginTop = '10px';
+    countdownDiv.style.display = 'none'; // Ocultarlo inicialmente
+    compararBtn.parentNode.insertBefore(countdownDiv, compararBtn.nextSibling); // Insertar debajo del botón
+
+
     let chartInstance = null; // Global variable to store the chart instance
+    let countdownActive = false; // Flag to track if a countdown is active
 
     compararBtn.addEventListener('click', () => {
         const yearsInput = document.getElementById('wt1-years');
@@ -24,7 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({years, opcion1, opcion2})
         })
-            .then(response => response.json())
+            .then(response => {
+                if (response.status === 429) {
+                    // Si el servidor devuelve un error 429 (Too Many Requests)
+                    const retryAfter = response.headers.get('Retry-After'); // Obtener el tiempo de espera del encabezado
+                    const waitTime = retryAfter ? parseInt(retryAfter, 10) : 60; // Usar el valor del encabezado o un valor predeterminado
+                    if (!countdownActive) { // Check if a countdown is already active
+                        startCountdown(waitTime);
+                    }
+                    throw new Error('Límite de peticiones alcanzado.');
+                }
+                return response.json();
+            })
             .then(data => {
                 // Find the last date in the dataset
                 const lastDate = new Date(data[data.length - 1].Fecha.split('/').reverse().join('-'));
@@ -194,7 +213,28 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Error al comparar:', error);
-                alert('Hubo un error al hacer la comparación.');
+                if (error.message !== 'Límite de peticiones alcanzado.') {
+                    alert('Hubo un error al hacer la comparación.');
+                }
             });
     });
+
+    function startCountdown(seconds) {
+        countdownActive = true; // Set the flag to indicate a countdown is active
+        countdownDiv.style.display = 'block'; // Mostrar el div
+        let remainingTime = seconds;
+
+        const updateCountdown = () => {
+            countdownDiv.textContent = `Para poder seguir comparando, esperar ${remainingTime} segundos.`;
+            if (remainingTime > 0) {
+                remainingTime--;
+                setTimeout(updateCountdown, 1000); // Actualizar cada segundo
+            } else {
+                countdownDiv.style.display = 'none'; // Ocultar el div cuando termine el tiempo
+                countdownActive = false; // Reset the flag when the countdown ends
+            }
+        };
+
+        updateCountdown();
+    }
 });
