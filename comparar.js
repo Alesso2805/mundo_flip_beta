@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const compararBtn = document.getElementById('compararBtn');
     const countdownDiv = document.createElement('div'); // Crear el div para el countdown
-    countdownDiv.style.color = 'red';
+    countdownDiv.style.color = 'yellow';
     countdownDiv.style.marginTop = '10px';
     countdownDiv.style.display = 'none'; // Ocultarlo inicialmente
     compararBtn.parentNode.insertBefore(countdownDiv, compararBtn.nextSibling); // Insertar debajo del botón
