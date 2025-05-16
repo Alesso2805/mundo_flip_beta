@@ -116,7 +116,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Validar que solo se ingresen números
         el.addEventListener('input', () => {
+            const selection = window.getSelection();
+            const range = selection.getRangeAt(0);
+            const cursorPosition = range.startOffset;
+
             el.textContent = el.textContent.replace(/[^0-9]/g, '');
+
+            // Restaurar la posición del cursor
+            range.setStart(el.firstChild, Math.min(cursorPosition, el.textContent.length));
+            range.setEnd(el.firstChild, Math.min(cursorPosition, el.textContent.length));
+            selection.removeAllRanges();
+            selection.addRange(range);
         });
 
         // Prevenir pegar letras
