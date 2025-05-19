@@ -1,5 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Variables y funciones para la sección de volatilidad
     const volatilidades = [
         { "Acción": "Acciones Perú", "Volatilidad 10 años": "22.79%", "Volatilidad 15 años": "22.64%", "Volatilidad 3 años": "22.14%", "Volatilidad 5 años": "25.00%" },
         { "Acción": "Acciones Europeas", "Volatilidad 10 años": "21.11%", "Volatilidad 15 años": "23.72%", "Volatilidad 3 años": "20.30%", "Volatilidad 5 años": "22.27%" },
