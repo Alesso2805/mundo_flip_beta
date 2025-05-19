@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Enviar datos al servidor
-        fetch('http://127.0.0.1:5000/comparar_inversiones', {
+        fetch('https://api-calculadora.flipinversiones.com/comparar_inversiones', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ years, opcion1, opcion2, investment })
