@@ -222,71 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // SECCION DE SLIDER (VARIABLES Y FUNCIONES)
 
-    const slider = document.querySelector('.slider');
-    const slides = document.querySelectorAll('.slide');
-    const prevButton = document.getElementById('prev-slide');
-    const nextButton = document.getElementById('next-slide');
-    let currentIndex = 0;
-    let autoSlideInterval;
-
-    function updateSlide(index) {
-        slider.style.transform = `translateX(-${index * 50}%)`;
-        updateButtonStyles();
-    }
-
-    function updateButtonStyles() {
-        if (currentIndex === 0) {
-            prevButton.style.backgroundColor = '#53613e';
-            nextButton.style.backgroundColor = 'gray';
-        } else if (currentIndex === slides.length - 1) {
-            prevButton.style.backgroundColor = 'gray';
-            nextButton.style.backgroundColor = '#53613e';
-        }
-    }
-
-    function slideNext() {
-        if (currentIndex < slides.length - 1) {
-            currentIndex++;
-            updateSlide(currentIndex);
-        }
-    }
-
-    function slidePrev() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlide(currentIndex);
-        }
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-            if (currentIndex < slides.length - 1) {
-                slideNext();
-            } else {
-                currentIndex = 0;
-                updateSlide(currentIndex);
-            }
-        }, 100000000);
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-
-    prevButton.addEventListener('click', () => {
-        slidePrev();
-        resetAutoSlide();
-    });
-
-    nextButton.addEventListener('click', () => {
-        slideNext();
-        resetAutoSlide();
-    });
-
-    // Initialize styles and start the automatic sliding
-    updateButtonStyles();
-    startAutoSlide();
+    // Slider y elipse eliminados. Solo queda el primer slide visible.
 
     // ---------------------------------------------------------------------- //
 

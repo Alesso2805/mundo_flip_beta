@@ -773,7 +773,7 @@ li {
 }
 
 .main-background {
-    background: linear-gradient(180deg, #0d6769 0%, #76b06e 100%);
+    background: linear-gradient(180deg, #004B58 0%, #004B58 100%);
     color: #f6f6f9;
     /* Reemplazamos height:100% por min-height */
     min-height: 140vh;
@@ -784,6 +784,20 @@ li {
     justify-content: space-between;
     gap: 10px;
     width: 100%;
+}
+.flex-panel-2 {
+    padding: 3em 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.take-note-container {
+    font-size: small;
+    color: #FFE699;
+}
+.take-note-text{
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 .panel-right {
     flex: 5;
@@ -845,7 +859,7 @@ li {
     position:relative;
     border:2px solid #30d2d6;
     border-radius:40px;
-    background:linear-gradient(135deg,#257766 0%,#3d8c6d 100%);
+    background:linear-gradient(180deg, #004B58 0%, #004B58 100%);
     color:#fff;
     min-width:260px;
 }
@@ -915,48 +929,77 @@ li {
     display: grid;
 }
 
-@media (max-width: 768px) {
-    .flex-panel {
-        flex-direction: column;
-        align-items: stretch;   /* que cada panel llene el ancho disponible */
-        width: 100%;
-    }
+/* Slide principal (hero) */
+.slide-hero {
+  background: #7b8c4a;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .panel-left,
-    .panel-right {
-        width: 100%;
-        flex: none;
+.slide-hero-content {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-        /* Muy importante para evitar overflow: */
-        min-width: 0;           /* permite encoger el panel */
-        padding: 0 5vw;         /* mantenemos padding, pero dentro de su ancho */
-    }
+.slide-hero-logo {
+  height: 48px;
+  margin-bottom: 10px;
+}
 
-    /* El texto “Compara…” ya no fija width, y centra */
-    .compara-text {
-        width: auto;
-        padding: 1rem 0;
-        font-size: 1.4rem;
-        text-align: center;
-    }
+.slide-hero-title {
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
 
-    /* El selector ocupa todo el ancho disponible */
-    .selector {
-        min-width: 0;           /* quita el min-width:260px del default */
-        width: 100%;
-    }
+.slide-hero-subtitle {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
 
-    /* Ajustes de título para que no desborde */
-    .main-title {
-        font-size: 2.5rem;
-        padding: 8vh 5vw 4vh;
-    }
+.slide-hero-laptop {
+  max-width: 150em;
+  width: 100%;
+  border-radius: 18px;
+  margin-bottom: 30px;
+}
 
-    /* Opcional: ocultar cualquier sobrante horizontal */
-    body, html {
-        overflow-x: hidden;
-        background: linear-gradient(180deg, #0d6769 0%, #76b06e 100%);
-    }
+.slide-hero-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.slide-hero-action-text {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.slide-hero-action-link {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 
